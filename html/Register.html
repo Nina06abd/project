@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - Qaiwan University</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+<div id="toast" class="toast">✓ You are registered successfully!</div>
+
+<div class="waitlist-panel" id="waitlistPanel">
+  <div class="waitlist-header">
+    <h4>Registered List</h4>
+    <span id="waitlistCount">0</span>
+  </div>
+  <div class="waitlist-body" id="waitlistBody">
+    <p class="waitlist-empty" id="waitlistEmpty">No registrations yet.</p>
+  </div>
+  <button class="waitlist-close" onclick="toggleWaitlist()">Close</button>
+</div>
+
+<div class="container">
+
+  <div class="left">
+    <div class="left-content">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h3>Qaiwan University</h3>
+          
+        </div>
+      </div>
+      <h1>Dream, Plan<br>Celebrate</h1>
+      <p class="tagline">Your next memorable experience starts here.</p>
+    </div>
+    <div class="deco-circles">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="deco-dots">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <div class="right">
+
+    <div class="hamburger" onclick="toggleWaitlist()">
+      <span></span><span></span><span></span>
+    </div>
+
+    <button class="go-back" onclick="window.location.href='event.html'">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      Go Back
+    </button>
+
+    <h2>Register Here</h2>
+    <p class="subtitle">Create your account to get started.</p>
+
+    <div class="form-group">
+      <label>Username</label>
+      <div class="input-wrap">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        <input type="text" id="username" placeholder="Enter your username">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <div class="input-wrap">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        <input type="password" id="password" placeholder="Enter your password">
+        <button class="toggle-pw" onclick="togglePassword()" type="button">
+          <svg id="eyeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+            <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+            <line x1="1" y1="1" x2="23" y2="23"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Gender</label>
+      <div class="gender-wrap">
+        <label><input type="radio" name="gender" value="Male" checked> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Date of Birth</label>
+      <div class="input-wrap">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="18" height="18" rx="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <input type="date" id="dob">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>City</label>
+      <div class="select-wrap">
+        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        <select id="city">
+          <option value="" disabled selected>Select your city</option>
+          <option>Sulaymaniah</option>
+          <option>Hawler</option>
+          <option>Duhok</option>
+        </select>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+    </div>
+
+    <button class="btn-register" onclick="register()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <line x1="19" y1="8" x2="19" y2="14"/>
+        <line x1="22" y1="11" x2="16" y2="11"/>
+      </svg>
+      Register
+    </button>
+
+    <p class="login-link">Already have an account? <a href="event.html">Login</a></p>
+
+    <div class="deco-right"><span></span><span></span></div>
+    <div class="deco-dark"></div>
+
+  </div>
+</div>
+
+<script src="register.js"></script>
+</body>
+</html>

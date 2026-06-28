@@ -1,0 +1,49 @@
+body {
+    font-family: Arial;
+    background: #fcd1b3;
+    padding: 20px;
+}
+
+.box {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+}
+
+h2 {
+    color: rgb(185, 45, 91);
+}
+
+input, button, select {
+    padding: 10px;
+    margin: 5px;
+    width: 90%;
+}
+
+button {
+    background: rgb(166, 25, 79);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgb(184, 57, 93);
+}
+
+input[type="radio"] {
+    width: auto;
+}
+
+img {
+
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+     height: 550px;
+     object-fit:cover;
+
+
+}
