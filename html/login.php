@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en"
 <head>
+    <h1>Welcome to My Website</h1>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1200, initial-scale=1.0">
     <title>Login - Online Event Registration System</title>
