@@ -48,17 +48,13 @@ include 'config.php';
             id="btnList"
             onclick="showList()">
 
-      <svg class="icon-list-svg"
-           viewBox="0 0 20 16"
-           fill="currentColor">
-
+      <svg class="icon-list-svg" viewBox="0 0 20 16" fill="currentColor">
         <rect x="6" y="0" width="14" height="2" rx="1"/>
         <rect x="6" y="7" width="14" height="2" rx="1"/>
         <rect x="6" y="14" width="14" height="2" rx="1"/>
         <rect x="0" y="0" width="3" height="2" rx="1"/>
         <rect x="0" y="7" width="3" height="2" rx="1"/>
         <rect x="0" y="14" width="3" height="2" rx="1"/>
-
       </svg>
 
       List
@@ -68,15 +64,11 @@ include 'config.php';
             id="btnMonth"
             onclick="showMonth()">
 
-      <svg class="icon-month-svg"
-           viewBox="0 0 20 16"
-           fill="currentColor">
-
+      <svg class="icon-month-svg" viewBox="0 0 20 16" fill="currentColor">
         <rect x="0" y="0" width="8" height="6" rx="1"/>
         <rect x="12" y="0" width="8" height="6" rx="1"/>
         <rect x="0" y="10" width="8" height="6" rx="1"/>
         <rect x="12" y="10" width="8" height="6" rx="1"/>
-
       </svg>
 
       Month
@@ -111,6 +103,10 @@ include 'config.php';
 $sql = "SELECT * FROM events";
 $result = mysqli_query($conn, $sql);
 
+if (!$result) {
+    die("Query Failed: " . mysqli_error($conn));
+}
+
 if (mysqli_num_rows($result) > 0) {
 
     while ($row = mysqli_fetch_assoc($result)) {
@@ -141,6 +137,13 @@ if (mysqli_num_rows($result) > 0) {
         <div class="divider"></div>
 
         <a href="Register.html">Register Now</a>
+
+        <br><br>
+
+        <a href="delete_event.php?id=<?php echo $row['event_id']; ?>"
+           onclick="return confirm('Are you sure you want to delete this event?');">
+           Delete Event
+        </a>
 
     </div>
 
