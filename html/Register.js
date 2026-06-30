@@ -1,6 +1,7 @@
 function togglePassword() {
   const input = document.getElementById('password');
-  const icon  = document.getElementById('eyeIcon');
+  const icon = document.getElementById('eyeIcon');
+
   if (input.type === 'password') {
     input.type = 'text';
     icon.innerHTML = `
@@ -24,73 +25,119 @@ function saveList() {
 function register() {
   const username = document.getElementById('username').value.trim();
   const password = document.getElementById('password').value.trim();
-  const gender   = document.querySelector('input[name="gender"]:checked')?.value || '';
-  const dob      = document.getElementById('dob').value;
-  const city     = document.getElementById('city').value;
+  const gender = document.querySelector('input[name="gender"]:checked')?.value || '';
+  const dob = document.getElementById('dob').value;
+  const city = document.getElementById('city').value;
 
-  if (!username) { shake('username'); return; }
-  if (!password) { shake('password'); return; }
-  if (!dob)      { shake('dob');      return; }
-  if (!city)     { alert('Please select a city.'); return; }
+  if (!username) {
+    shake('username');
+    return;
+  }
 
-  registeredList.push({ username, gender, dob, city, time: new Date().toLocaleTimeString() });
+  if (!password) {
+    shake('password');
+    return;
+  }
+
+  if (!dob) {
+    shake('dob');
+    return;
+  }
+
+  if (!city) {
+    alert('Please select a city.');
+    return;
+  }
+
+  // Save registration
+  registeredList.push({
+    username,
+    gender,
+    dob,
+    city,
+    time: new Date().toLocaleTimeString()
+  });
+
   saveList();
   showToast();
   renderWaitlist();
 
+  // Clear form
   document.getElementById('username').value = '';
   document.getElementById('password').value = '';
   document.getElementById('dob').value = '';
   document.getElementById('city').value = '';
+
+  // Redirect to home page after 2 seconds
+  setTimeout(() => {
+    window.location.href = 'Event.html';
+  }, 2000);
 }
 
 function shake(id) {
   const el = document.getElementById(id);
+
   el.style.borderColor = '#e53935';
   el.style.animation = 'shake 0.3s ease';
+
   setTimeout(() => {
     el.style.borderColor = '#e0e0e0';
     el.style.animation = '';
   }, 600);
+
   el.focus();
 }
 
 const s = document.createElement('style');
-s.textContent = `@keyframes shake {
-  0%,100%{transform:translateX(0)}
-  20%{transform:translateX(-6px)}
-  40%{transform:translateX(6px)}
-  60%{transform:translateX(-4px)}
-  80%{transform:translateX(4px)}
+
+s.textContent = `
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
 }`;
+
 document.head.appendChild(s);
 
 function showToast() {
   const t = document.getElementById('toast');
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
+
+  setTimeout(() => {
+    t.classList.remove('show');
+  }, 3000);
 }
 
 function toggleWaitlist() {
   const panel = document.getElementById('waitlistPanel');
   panel.classList.toggle('show');
-  if (panel.classList.contains('show')) renderWaitlist();
+
+  if (panel.classList.contains('show')) {
+    renderWaitlist();
+  }
 }
 
 function renderWaitlist() {
-  const body  = document.getElementById('waitlistBody');
+  const body = document.getElementById('waitlistBody');
   const empty = document.getElementById('waitlistEmpty');
   const count = document.getElementById('waitlistCount');
+
   count.textContent = registeredList.length;
+
   if (registeredList.length === 0) {
     empty.style.display = 'block';
     body.querySelectorAll('.waitlist-item').forEach(e => e.remove());
     return;
   }
+
   empty.style.display = 'none';
   body.querySelectorAll('.waitlist-item').forEach(e => e.remove());
+
   registeredList.forEach(p => {
     const el = document.createElement('div');
+
     el.className = 'waitlist-item';
     el.innerHTML = `
       <div class="waitlist-avatar">${p.username.charAt(0).toUpperCase()}</div>
@@ -98,6 +145,6 @@ function renderWaitlist() {
         <div class="w-name">${p.username}</div>
         <div class="w-meta">${p.city} · ${p.gender} · ${p.time}</div>
       </div>`;
+
     body.appendChild(el);
-  });
-}
+  }
