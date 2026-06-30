@@ -68,10 +68,9 @@ function register() {
   document.getElementById('dob').value = '';
   document.getElementById('city').value = '';
 
-  // Redirect to home page after 2 seconds
-  setTimeout(() => {
-    window.location.href = 'Event.html';
-  }, 2000);
+ setTimeout(() => {
+    window.location.href = "./Event.html";
+}, 2000);
 }
 
 function shake(id) {
@@ -147,4 +146,5 @@ function renderWaitlist() {
       </div>`;
 
     body.appendChild(el);
-  }
+  });
+}
